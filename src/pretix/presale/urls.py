@@ -49,13 +49,6 @@ import pretix.presale.views.user
 import pretix.presale.views.waiting
 import pretix.presale.views.widget
 
-from django.urls import path
-from pretix.presale.views.scan_qr import scan_qr  # Impor langsung fungsi
-
-urlpatterns = [
-    path('scan_qr/', scan_qr, name='scan_qr'),  # Gunakan fungsi yang sudah diimpor
-]
-
 frame_wrapped_urls = [
     re_path(r'^cart/remove$', pretix.presale.views.cart.CartRemove.as_view(), name='event.cart.remove'),
     re_path(r'^cart/voucher$', pretix.presale.views.cart.CartApplyVoucher.as_view(), name='event.cart.voucher'),

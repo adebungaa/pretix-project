@@ -786,7 +786,7 @@ function copy_answers(elements, answers) {
 }
 
 //------------------------- SUKSES HIT KE API MIDTRANS 
-//document.getElementById('pay-button').on = function (event) {
+// document.getElementById('pay-button').on = function (event) {
 // $(document).on("click", "#paybuttonmidtrans", function(event){
 //     console.log("klik berhasil");
 //     event.preventDefault();  // Mencegah form submit default
@@ -799,26 +799,6 @@ function copy_answers(elements, answers) {
 //                 alert("Error: " + data.message);
 //             }
 //     });
-// });
-//};
-
-//test scanner
-// $(document).on("click", "#paybuttonmidtrans", function (event) {
-//     console.log("klik berhasil");
-//     event.preventDefault(); // Mencegah form submit default
-//     fetch("/control/createpaymentmidtrans")
-//         .then(response => response.json())
-//         .then(data => {
-//             if (data.status === 'success') {
-//                 // Redirect ke scan_qr.html dengan query string
-//                 window.location.href = "/event/scan_qr/";
-//             } else {
-//                 alert("Error: " + data.message);
-//             }
-//         })
-//         .catch(error => {
-//             console.error("Error: ", error);
-//         });
 // });
 
 //------------------------- SUKSES TARIK DATA
@@ -886,6 +866,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (cartTotalElement && payButton) {
         // Ambil nilai total dan ubah menjadi angka
+        // const formattedTotal = cartTotalElement.innerText || cartTotalElement.textContent;
+        // const cartTotalNumber = parseFloat(formattedTotal.replace("IDR", "").replace(",", "."));
+        // const cartTotalInThousands = cartTotalNumber * 1000;
+
         const formattedTotal = cartTotalElement.innerText || cartTotalElement.textContent;
         const cartTotalNumber = parseFloat(formattedTotal.replace("Rp", "").replace(",", "."));
         const cartTotalInThousands = cartTotalNumber * 1000;
@@ -914,6 +898,11 @@ document.addEventListener('DOMContentLoaded', function () {
                             onSuccess:function(result){
                                 console.log("==================hasil transaksi===================")
                                 console.log(result)
+
+                                $("#link_midtrans").submit();
+
+                                // window.location.href = 'checkout/confirm/'
+
 
                                 // masukkan ajax untuk simpan bukti bayar
                             }

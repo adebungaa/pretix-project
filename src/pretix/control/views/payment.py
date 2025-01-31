@@ -70,12 +70,6 @@ def create_payment(request):
         data = json.loads(request.body)
         total_amount = data.get("totalAmount")
 
-        # if total_amount is None:
-        #     return JsonResponse({
-        #         "status": "error",
-        #         "message": "Total amount not provided"
-        #     }, status=400)
-
         # Detail transaksi dengan total_amount yang dinamis
         transaction_details = {
             "order_id": "order-id-python-" + str(request.user.id) + "-" + str(int(time.time())),
@@ -85,7 +79,7 @@ def create_payment(request):
         customer_details = {
             "first_name": "Ade Bunga",
             "last_name": "Dwi",
-            "email": "adebungads@gmail.com",
+            "email": "adeflower04@gmail.com",
             "phone": "083189241646"
         }
         

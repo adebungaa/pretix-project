@@ -51,7 +51,7 @@ from . import webhooks_midtrans
 
 urlpatterns = [
     # Tambahkan URL untuk webhook Midtrans
-    path('api/webhook/midtrans/', webhooks_midtrans.midtrans_webhook, name='midtrans-webhook'),
+    path('/api/webhook/midtrans/', webhooks_midtrans.midtrans_webhook, name='midtrans-webhook'),
 ]
 
 router = routers.DefaultRouter()

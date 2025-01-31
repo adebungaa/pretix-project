@@ -38,7 +38,7 @@ from django.views.generic.base import RedirectView
 
 from pretix.control.views import (
     auth, checkin, dashboards, discounts, event, geo, global_settings, item,
-    main, modelimport, oauth, orders, organizer, pdf, search, shredder,
+    main, modelimport, oauth, orders, organizer, pdf, scanqr, search, shredder,
     subevents, typeahead, user, users, vouchers, waitinglist,
     payment
 )
@@ -46,10 +46,12 @@ from pretix.control.views import (
 from django.urls import path
 from .views.payment import create_payment
 from .views.validation import validation_ticket
+from .views.scanqr import scan_qr
 
 urlpatterns = [
     path("createpaymentmidtrans", create_payment, name="create_payment_midtrans"),
     re_path(r'^createpaymentmidtrans$', payment.create_payment, name="payment.create_payment_midtrans"),
+    #re_path(r'^createpaymentmidtrans$', scanqr.scan_qr, name="scanqr.create_qr_scanner"),
     path('validasi-tiket/', validation_ticket, name='validasi_tiket'),
     
     re_path(r'^logout$', auth.logout, name='auth.logout'),

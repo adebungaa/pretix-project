@@ -15,7 +15,7 @@ def midtrans_webhook(request):
             payment_type = payload.get('payment_type')
             fraud_status = payload.get('fraud_status')
 
-            # Contoh logika: Update database berdasarkan status transaksi
+            # logika: Update database berdasarkan status transaksi
             if transaction_status == 'capture':
                 if payment_type == 'credit_card':
                     if fraud_status == 'accept':

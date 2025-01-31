@@ -41,6 +41,13 @@ import pretix.control.urls
 import pretix.presale.urls
 from pretix.base.views import applepay, js_helpers
 
+from pretix.control.views import (
+    auth, checkin, dashboards, discounts, event, geo, global_settings, item,
+    main, modelimport, oauth, orders, organizer, pdf, scanqr, search, shredder,
+    subevents, typeahead, user, users, vouchers, waitinglist,
+    payment
+)
+
 from .base.views import (
     cachedfiles, csp, health, js_catalog, metrics, redirect, source,
 )
@@ -52,9 +59,12 @@ urlpatterns = [
     # URL lain di proyek Anda
     path('api/', include('pretix.api.urls')),  # Arahkan semua URL API ke urls.py di src/pretix/api
     path('', include('pretix.presale.urls')),
+    path('', include('pretix.control.urls')),
 ]
 
 base_patterns = [
+    
+    re_path(r'^createpaymentmidtrans$', payment.create_payment, name="payment.create_payment_midtrans"),
     re_path(r'^download/(?P<id>[^/]+)/$', cachedfiles.DownloadView.as_view(),
             name='cachedfile.download'),
     re_path(r'^healthcheck/$', health.healthcheck,
